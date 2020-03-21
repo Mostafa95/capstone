@@ -18,6 +18,11 @@ def create_app(test_config=None):
     response.headers.add('Access-Control-Allow-Methods', 'GET,POST,DELETE,PATCH')
     return response
   
+  @app.route('/')
+  def welcome():
+    msg = 'Welcome to Casting Agency API'
+    return jsonify(msg)
+
   @app.route('/Actors', methods=['GET'])
   @requires_auth(permission='get:Actors')
   def get_Actors(payload):
